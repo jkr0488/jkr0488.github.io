@@ -49,12 +49,19 @@ h3{font-size:20px;margin:0 0 2px}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .grid .item{margin:0}
 .skills h3{font-size:16px;color:var(--accent);margin:18px 0 8px}
+.docs h3{font-size:18px;margin:24px 0 10px;color:var(--accent)}
+.doc{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:12px 16px;margin-bottom:10px}
+.doc .ext{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:13px;background:var(--tag);color:var(--accent);padding:6px 8px;border-radius:4px;min-width:48px;text-align:center}
+.doc .nm{flex:1;min-width:0;overflow-wrap:anywhere}
+.doc .sz{color:var(--muted);font-size:14px;display:block}
+.doc .btn{margin:0;padding:8px 14px;font-size:15px}
+#docstatus{color:var(--muted)}
 footer{border-top:1px solid var(--line);padding:28px 20px calc(28px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:15px}
 </style>
 </head>
 <body>
 <header class="nav"><nav>
-<a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+<a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="#education">Education</a><a href="#documents">Documents</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
 <button id="theme" type="button" aria-label="Switch light or dark theme">Theme</button>
 </nav></header>
 <main>
@@ -63,7 +70,7 @@ footer{border-top:1px solid var(--line);padding:28px 20px calc(28px + env(safe-a
 <p class="role">Chief Instructor (Computer) at the Institute of Science and Technology, Dhaka</p>
 <svg class="trace" viewBox="0 0 640 40" aria-hidden="true"><path d="M4 20 H180 L200 6 H360 L380 34 H560 L576 20 H620"/><circle cx="4" cy="20" r="5"/><circle cx="620" cy="20" r="5"/></svg>
 <p class="lead">I teach computer engineering to diploma students and research embedded systems, network security and cloud computing. Over 13 years I have built lab programs, led workshops and mentored the next generation of technology professionals.</p>
-<a class="btn p" href="#contact">Get in touch</a><a class="btn s" href="#research">See my research</a>
+<a class="btn p" href="#contact">Get in touch</a><a class="btn s" href="#research">See my research</a><a class="btn s" id="cvbtn" href="#documents" hidden>Download CV</a>
 </div>
 
 <section id="about">
@@ -128,6 +135,12 @@ footer{border-top:1px solid var(--line);padding:28px 20px calc(28px + env(safe-a
 <h3>Digital marketing</h3><ul class="tags"><li class="tag">Social media marketing</li><li class="tag">Search engine marketing</li></ul>
 </section>
 
+<section id="documents" class="docs">
+<h2>Documents</h2>
+<p>My CV, certificates and other documents. Tap Download to save a copy.</p>
+<div id="doclist"><p id="docstatus">Loading documents…</p></div>
+</section>
+
 <section id="contact">
 <h2>Contact</h2>
 <p>For teaching, research collaboration or training, send me an email.</p>
@@ -140,6 +153,36 @@ footer{border-top:1px solid var(--line);padding:28px 20px calc(28px + env(safe-a
 (function(){var b=document.getElementById("theme"),r=document.documentElement;
 try{var s=localStorage.getItem("theme");if(s)r.setAttribute("data-theme",s)}catch(e){}
 b.addEventListener("click",function(){var dark=r.getAttribute("data-theme")==="dark"||(!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);var n=dark?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n)}catch(e){}});})();
+(function(){
+var list=document.getElementById("doclist"),st=document.getElementById("docstatus");
+var host=location.hostname,owner,repo;
+if(host.indexOf(".github.io")>0){owner=host.split(".")[0];var seg=location.pathname.split("/").filter(Boolean)[0];repo=(seg&&seg.indexOf(".")<0)||(seg&&seg.indexOf("github.io")>0)?seg:owner+".github.io";}
+var CFG={owner:owner||"jkr0488",repo:repo||"jkr0488.github.io",folder:"documents"};
+var base=location.pathname.replace(/[^\/]*$/,"");
+function api(path){return fetch("https://api.github.com/repos/"+CFG.owner+"/"+CFG.repo+"/contents/"+path).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();});}
+function nice(n){return n.replace(/\.[^.]+$/,"").replace(/[_-]+/g," ");}
+function size(b){return b>1048576?(b/1048576).toFixed(1)+" MB":Math.max(1,Math.round(b/1024))+" KB";}
+function row(f,dir){var d=document.createElement("div");d.className="doc";
+var url=base+CFG.folder+"/"+(dir?encodeURIComponent(dir)+"/":"")+encodeURIComponent(f.name);
+var e=(f.name.split(".").pop()||"").toUpperCase().slice(0,4);
+d.innerHTML='<span class="ext"></span><span class="nm"></span><a class="btn p" download></a>';
+d.children[0].textContent=e;
+var nm=d.children[1];nm.textContent=nice(f.name);var sz=document.createElement("span");sz.className="sz";sz.textContent=size(f.size);nm.appendChild(sz);
+var a=d.children[2];a.href=url;a.setAttribute("download",f.name);a.textContent="Download";return d;}
+function group(title,files,dir){if(!files.length)return;var h=document.createElement("h3");h.textContent=title;list.appendChild(h);files.forEach(function(f){list.appendChild(row(f,dir));});}
+api(CFG.folder).then(function(items){
+var files=items.filter(function(i){return i.type==="file"&&!/^\./.test(i.name)&&i.name!=="README.md";}),dirs=items.filter(function(i){return i.type==="dir";});
+return Promise.all(dirs.map(function(d){return api(CFG.folder+"/"+d.name).then(function(x){return{name:d.name,files:x.filter(function(i){return i.type==="file"&&!/^\./.test(i.name);})};});})).then(function(g){
+list.innerHTML="";
+if(!files.length&&!g.some(function(x){return x.files.length;})){list.innerHTML='<p id="docstatus">No documents yet.</p>';return;}
+g.forEach(function(x){group(x.name.toLowerCase()==="cv"?"CV":nice(x.name).replace(/^./,function(c){return c.toUpperCase();}),x.files,x.name);});
+group("Other documents",files,"");
+var cv=null;g.forEach(function(x){if(/cv|resume/i.test(x.name)&&x.files.length&&!cv)cv={f:x.files[0],d:x.name};});
+if(!cv)files.concat([]).forEach(function(f){if(/cv|resume/i.test(f.name)&&!cv)cv={f:f,d:""};});
+if(cv){var b=document.getElementById("cvbtn");b.href=base+CFG.folder+"/"+(cv.d?encodeURIComponent(cv.d)+"/":"")+encodeURIComponent(cv.f.name);b.setAttribute("download",cv.f.name);b.hidden=false;}
+});}).catch(function(){list.innerHTML='<p id="docstatus">Documents could not be loaded. Please try again later.</p>';});
+})();
 </script>
 </body>
-</html>
+       </html>
+       
