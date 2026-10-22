@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jahirul Kader | Computer Science Educator &amp; Researcher</title>
+<meta name="description" content="Chief Instructor (Computer) at IST, Dhaka. Embedded systems, networking, cloud computing and security.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f7f4;--surface:#ffffff;--ink:#14231f;--muted:#4f625c;--line:#cfdad4;--accent:#0f5c4d;--copper:#a9652a;--tag:#e2efe9}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a17;--surface:#14251f;--ink:#e8f1ed;--muted:#9fb5ad;--line:#27403a;--accent:#5fd0b4;--copper:#e0a06a;--tag:#1b3530}}
+:root[data-theme="dark"]{--bg:#0e1a17;--surface:#14251f;--ink:#e8f1ed;--muted:#9fb5ad;--line:#27403a;--accent:#5fd0b4;--copper:#e0a06a;--tag:#1b3530}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.65 "Source Serif 4",Georgia,serif;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;background:var(--bg);opacity:.9;z-index:-1}
+h1,h2,h3,nav,.btn,.tag{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--copper);outline-offset:2px}
+header.nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+nav{max-width:960px;margin:auto;display:flex;gap:18px;padding:12px 20px;overflow-x:auto;font-weight:500;font-size:15px;white-space:nowrap}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--accent)}
+nav button{margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:2px 10px;cursor:pointer}
+main{max-width:960px;margin:auto;padding:0 20px 60px}
+.hero{padding:72px 0 48px}
+.hero h1{font-size:clamp(46px,10vw,96px);line-height:.95;margin:0 0 18px;font-weight:800;letter-spacing:-.03em}
+.hero .role{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(18px,3vw,24px);color:var(--accent);font-weight:700;margin:0 0 20px}
+.hero p.lead{max-width:640px;color:var(--muted);margin:0 0 28px}
+.trace{width:100%;max-width:640px;height:auto;margin:0 0 28px;display:block}
+.trace path{fill:none;stroke:var(--copper);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;stroke-dashoffset:900;animation:draw 2.2s ease-out forwards}
+.trace circle{fill:var(--bg);stroke:var(--copper);stroke-width:3}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.trace path{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
+.btn{display:inline-block;padding:11px 20px;border-radius:6px;font-weight:700;text-decoration:none;font-size:16px;margin:0 10px 10px 0}
+.btn.p{background:var(--accent);color:var(--bg)}
+.btn.s{border:2px solid var(--accent);color:var(--accent)}
+section{padding:44px 0;border-top:1px solid var(--line)}
+h2{font-size:32px;margin:0 0 22px;letter-spacing:-.01em}
+h3{font-size:20px;margin:0 0 2px}
+.meta{color:var(--muted);font-size:15px;margin:0 0 8px}
+.item{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--accent);padding:18px 20px;margin-bottom:16px;border-radius:4px}
+.item ul{margin:8px 0 0;padding-left:20px}
+.item li{margin-bottom:4px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tag{background:var(--tag);color:var(--ink);padding:5px 12px;border-radius:999px;font-size:15px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid .item{margin:0}
+.skills h3{font-size:16px;color:var(--accent);margin:18px 0 8px}
+footer{border-top:1px solid var(--line);padding:28px 20px calc(28px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:15px}
+</style>
+</head>
+<body>
+<header class="nav"><nav>
+<a href="#about">About</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+<button id="theme" type="button" aria-label="Switch light or dark theme">Theme</button>
+</nav></header>
+<main>
+<div class="hero">
+<h1>Jahirul Kader</h1>
+<p class="role">Chief Instructor (Computer) at the Institute of Science and Technology, Dhaka</p>
+<svg class="trace" viewBox="0 0 640 40" aria-hidden="true"><path d="M4 20 H180 L200 6 H360 L380 34 H560 L576 20 H620"/><circle cx="4" cy="20" r="5"/><circle cx="620" cy="20" r="5"/></svg>
+<p class="lead">I teach computer engineering to diploma students and research embedded systems, network security and cloud computing. Over 13 years I have built lab programs, led workshops and mentored the next generation of technology professionals.</p>
+<a class="btn p" href="#contact">Get in touch</a><a class="btn s" href="#research">See my research</a>
+</div>
+
+<section id="about">
+<h2>About</h2>
+<p>I am a dedicated educator and researcher in computer science and engineering. My work focuses on innovative teaching methods, curriculum development and collaborative research. My expertise covers embedded systems, cloud computing, and the design, implementation, management and security of network infrastructure.</p>
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+<div class="item">
+<h3>Chief Instructor (Computer)</h3>
+<p class="meta">Institute of Science and Technology (IST), Dhanmondi, Dhaka. April 2021 to present</p>
+<ul>
+<li>Lead the Diploma in Engineering program under the Bangladesh Technical Education Board (BTEB).</li>
+<li>Run workshops on microcontroller-based systems, ISP setup with Enterprise Linux, and network design, implementation, security and management using simulators.</li>
+</ul></div>
+<div class="item">
+<h3>Instructor</h3>
+<p class="meta">Institute of Science and Technology (IST), Dhanmondi, Dhaka. October 2013 to March 2021</p>
+<ul>
+<li>Taught computer science and engineering courses, including microcontroller programming, automation, and network design and management with ISP setup.</li>
+<li>Helped develop lab programs and technical guidelines for diploma students.</li>
+</ul></div>
+</section>
+
+<section id="research">
+<h2>Research</h2>
+<h3>Interests</h3>
+<ul class="tags" style="margin:12px 0 28px">
+<li class="tag">Microcontroller-based automation</li><li class="tag">Embedded lift control systems</li><li class="tag">Cloud, distributed and parallel computing</li><li class="tag">Network management and security (MIB)</li><li class="tag">Wireless communication</li><li class="tag">High-speed computer networks</li>
+</ul>
+<h3 style="margin-bottom:14px">Published papers</h3>
+<div class="item"><h3>Design and Development of a System Danger Path Alert Message for a Vehicle Using Android and Web Service</h3>
+<p class="meta">IST Journal on Business &amp; Technology, Vol. 9 No. 1, June 2019. ISSN 2070-4135</p></div>
+<div class="item"><h3>A Prototype of Secure Access Control Framework for Mobile-Based Cloud Computing</h3>
+<p class="meta">IST Journal on Business &amp; Technology, Vol. 8 No. 1, June 2017. ISSN 2070-4135</p></div>
+</section>
+
+<section id="education">
+<h2>Education</h2>
+<div class="grid">
+<div class="item"><h3>M.Sc. in Computer Science</h3><p class="meta">Jahangirnagar University, 2015</p><p style="margin:0">CGPA 3.38 / 4.00</p></div>
+<div class="item"><h3>B.Sc. in Computer Science and Engineering</h3><p class="meta">The People’s University of Bangladesh, 2010</p><p style="margin:0">CGPA 3.88 / 4.00</p></div>
+<div class="item"><h3>Diploma in Engineering (Computer)</h3><p class="meta">Islami Bank Institute of Technology, 2006</p><p style="margin:0">CGPA 3.52 / 4.00</p></div>
+</div>
+<h2 style="margin-top:44px">Training and certifications</h2>
+<div class="item"><ul style="margin:0">
+<li><strong>Cisco Certified Network Associate (CCNA)</strong>, AIUB, 2012</li>
+<li><strong>Programmable Logic Controller (PLC)</strong>, BITAC, 2016</li>
+<li><strong>Networking and ISP Setup with Red Hat Linux</strong>, BBIT, 2011</li>
+<li><strong>Web Design and Development for Freelancing (Level 3)</strong>, NSDA</li>
+<li><strong>Computer Operation (Level 3)</strong>, NSDA</li>
+</ul></div>
+</section>
+
+<section id="skills" class="skills">
+<h2>Skills</h2>
+<h3>Programming</h3><ul class="tags"><li class="tag">C</li><li class="tag">C++</li><li class="tag">Java</li><li class="tag">Python</li><li class="tag">C#</li><li class="tag">Kotlin</li><li class="tag">JavaScript</li><li class="tag">PHP</li><li class="tag">HTML</li><li class="tag">CSS</li></ul>
+<h3>Databases</h3><ul class="tags"><li class="tag">MySQL</li><li class="tag">MS SQL</li><li class="tag">SQL+</li></ul>
+<h3>Networking and servers</h3><ul class="tags"><li class="tag">Red Hat Linux Enterprise 5 and 6</li><li class="tag">Windows Server 2003 and 2013</li><li class="tag">ISP setup</li><li class="tag">Network design and management</li></ul>
+<h3>Operating systems</h3><ul class="tags"><li class="tag">Windows</li><li class="tag">Red Hat Linux</li><li class="tag">Ubuntu</li><li class="tag">Linux Mint</li></ul>
+<h3>Digital marketing</h3><ul class="tags"><li class="tag">Social media marketing</li><li class="tag">Search engine marketing</li></ul>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>For teaching, research collaboration or training, send me an email.</p>
+<a class="btn p" href="mailto:jkr0488@gmail.com">jkr0488@gmail.com</a>
+<p class="meta">Dhaka, Bangladesh</p>
+</section>
+</main>
+<footer>© 2026 Jahirul Kader</footer>
+<script>
+(function(){var b=document.getElementById("theme"),r=document.documentElement;
+try{var s=localStorage.getItem("theme");if(s)r.setAttribute("data-theme",s)}catch(e){}
+b.addEventListener("click",function(){var dark=r.getAttribute("data-theme")==="dark"||(!r.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches);var n=dark?"light":"dark";r.setAttribute("data-theme",n);try{localStorage.setItem("theme",n)}catch(e){}});})();
+</script>
+</body>
+</html>
